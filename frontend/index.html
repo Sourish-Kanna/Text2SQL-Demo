@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI SQL Agent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI SQL Agent</h1>
+            <p>Enter a question in plain English to query the MySQL sample database.</p>
+        </header>
+
+        <main>
+            <form id="query-form">
+                <textarea id="question-input" placeholder="e.g., Who is the highest paid employee?" required></textarea>
+                <button type="submit" id="submit-button">Generate SQL</button>
+            </form>
+
+            <div id="results-container" class="hidden">
+                <div id="loading-spinner" class="hidden"></div>
+                
+                <div id="result-content">
+                    <h2>Generated SQL Query</h2>
+                    <pre><code id="sql-query-output"></code></pre>
+
+                    <h2>Validation Result</h2>
+                    <p id="validation-output"></p>
+                </div>
+                 <div id="error-container" class="hidden">
+                    <h2>Error</h2>
+                    <p id="error-message"></p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

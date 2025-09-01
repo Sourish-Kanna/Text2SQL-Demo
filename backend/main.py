@@ -3,6 +3,26 @@ import httpx
 import mysql.connector
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware # <--- IMPORT THIS
+
+# --- FastAPI App ---
+app = FastAPI()
+
+# --- Add CORS Middleware ---
+# This allows the frontend (running on localhost:8080) to communicate with the backend.
+origins = [
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # --- Configuration ---
 DB_HOST = os.getenv("DATABASE_HOST")

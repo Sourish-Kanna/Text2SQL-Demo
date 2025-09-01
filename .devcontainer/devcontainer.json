@@ -1,44 +1,25 @@
 {
     "name": "AI SQL Agent Dev Environment",
-
-    // Tells VS Code to use your existing docker-compose file.
-    // The ../ goes up one level from the .devcontainer folder to the root.
     "dockerComposeFile": [
         "../docker-compose.yml"
     ],
-
-    // The name of the service within docker-compose.yml to attach VS Code to.
-    // We want to develop inside our Python backend service.
     "service": "backend",
-
-    // The path inside the container where your project files will be.
-    // This should match the WORKDIR in your backend/Dockerfile.
     "workspaceFolder": "/app",
 
-    // Use 'forwardPorts' to make sure your application's port is accessible.
-    "forwardPorts": [8000, 3306],
+    // --- Add the new port for the UI ---
+    "forwardPorts": [8000, 3307, 8080],
 
-    // Optional: Add helpful VS Code settings and extensions to the container.
     "customizations": {
         "vscode": {
             "settings": {
-                // Set Python interpreter path for the container
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
-                "python.linting.pylintEnabled": true,
-                "python.linting.enabled": true
+                "python.defaultInterpreterPath": "/usr/local/bin/python"
             },
-            // Install extensions inside the container for a better experience
             "extensions": [
-                "ms-python.python",      // Official Python extension
-                "ms-azuretools.vscode-docker" // Docker extension
+                "ms-python.python",
+                "ms-azuretools.vscode-docker"
             ]
         }
     },
-
-    // Runs after the container is created.
-    // You can use this to install dependencies or run setup scripts.
     "postCreateCommand": "pip install --no-cache-dir -r requirements.txt",
-
-    // Tell VS Code to connect as the default container user.
     "remoteUser": "root"
 }
