@@ -1,0 +1,34 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: mysecretpassword
+      MYSQL_DATABASE: employees
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    # This 'env_file' directive securely loads the variables from your .env file
+    env_file:
+      - ./.env
+    # The environment section now confirms the variables are expected by the container.
+    # Their values are safely loaded from the .env file at runtime.
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=mysecretpassword
+      - DATABASE_NAME=employees
+    depends_on:
+      - db
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
