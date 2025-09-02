@@ -29,15 +29,15 @@ services:
 
   # --- DB SERVICE (used by all) ---
   db:
-    image: mysql:8.0
+    build: ./db-init  # <-- Tells Docker to build the Dockerfile in the db-init folder
     environment:
       MYSQL_ROOT_PASSWORD: mysecretpassword
       MYSQL_DATABASE: employees
     ports:
       - "3307:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
-      - ./db-init:/docker-entrypoint-initdb.d
+      - mysql_data:/var/lib/mysql # <-- The data persistence volume remains
+      # The initialization volume is no longer needed because the files are copied in the image
     restart: unless-stopped
 
   # --- BACKEND SERVICE (for production, not used by dev container) ---
