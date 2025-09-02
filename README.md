@@ -111,3 +111,22 @@ Runs a live-reloading dev server.
 ```bash
 docker-compose down
 ```
+
+## 🛢️ Accessing the Database
+
+To directly access the **MySQL command line** for debugging or manual queries:
+
+1. Ensure your containers are running (`docker-compose up` or via the Dev Container).  
+2. Open a **new local terminal** (not inside VS Code’s integrated terminal).  
+3. Navigate to the project’s root directory.  
+4. Run the following command:  
+
+```bash
+docker-compose exec db mysql -u root -p employees
+```
+
+5. When prompted, enter the password:
+
+```text
+mysecretpassword
+```
