@@ -39,8 +39,8 @@ Make sure you have the following installed:
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repository-url>
-cd <repository-folder>
+git clone https://github.com/Sourish-Kanna/Text2SQL-Demo.git
+cd Text2SQL-Demo
 ````
 
 ### 2. Configure Environment Variables
