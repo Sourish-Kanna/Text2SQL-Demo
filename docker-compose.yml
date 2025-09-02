@@ -29,8 +29,7 @@ services:
 
   # --- DB SERVICE (EMPTY MYSQL IMAGE) ---
   db:
-    build:
-      context: ./db-init   # <--- keep your empty Dockerfile inside ./db-init
+    image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: mysecretpassword
       MYSQL_DATABASE: employees
@@ -38,7 +37,9 @@ services:
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d   # Mount init scripts here
     restart: unless-stopped
+
 
   # --- BACKEND SERVICE (for production, not used by dev container) ---
   backend:
