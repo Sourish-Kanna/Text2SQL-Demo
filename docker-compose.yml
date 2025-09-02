@@ -27,18 +27,16 @@ services:
     ports:
       - "8080:80"
 
-  # --- DB SERVICE (used by all) ---
+  # --- DB SERVICE (EMPTY MYSQL IMAGE) ---
   db:
-    image: mysql:8.0
+    build:
+      context: ./db-init   # <--- keep your empty Dockerfile inside ./db-init
     environment:
       MYSQL_ROOT_PASSWORD: mysecretpassword
       MYSQL_DATABASE: employees
     ports:
       - "3307:3306"
     volumes:
-      # Mounts our new script into the initialization folder
-      - ./db-init:/docker-entrypoint-initdb.d
-      # The data persistence volume remains the same
       - mysql_data:/var/lib/mysql
     restart: unless-stopped
 
