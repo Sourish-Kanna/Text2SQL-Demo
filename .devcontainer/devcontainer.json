@@ -1,13 +1,19 @@
 {
-    "name": "AI SQL Agent Dev Environment",
+    "name": "AI SQL Agent Full Stack Environment",
+
+    // Point to your docker-compose file
     "dockerComposeFile": [
         "../docker-compose.yml"
     ],
-    "service": "backend",
-    "workspaceFolder": "/app",
 
-    // --- Add the new port for the UI ---
-    "forwardPorts": [8000, 3307, 8080],
+    // The name of the new service VS Code should attach to
+    "service": "dev-environment",
+
+    // The path inside the container where your project files are mounted
+    "workspaceFolder": "/workspace",
+
+    // Forward all the ports we need for UI, backend, and DB
+    "forwardPorts": [8080, 8000, 3307],
 
     "customizations": {
         "vscode": {
@@ -20,6 +26,11 @@
             ]
         }
     },
-    "postCreateCommand": "pip install --no-cache-dir -r requirements.txt",
+
+    // This command now runs inside our new 'dev-environment' container.
+    // It installs the backend dependencies from the correct subfolder.
+    "postCreateCommand": "pip install --no-cache-dir -r backend/requirements.txt",
+
+    // Connect as the default root user
     "remoteUser": "root"
 }
