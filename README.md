@@ -92,13 +92,13 @@ livereload --port 8080 .
 Runs a live-reloading dev server.
 
 * Livereload runs on port **5500**
-* The frontend is available at **[http://localhost:8080](http://localhost:8080)**
+* The frontend is available at **[http://127.0.0.1:8080](http://127.0.0.1:8080)**
 
 ---
 
 ## 🌐 Access the Application
 
-* **Frontend UI** → [http://localhost:8080](http://localhost:8080)
+* **Frontend UI** → [http://127.0.0.1:8080](http://127.0.0.1:8080)
 * **Backend API Docs (Swagger)** → [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
