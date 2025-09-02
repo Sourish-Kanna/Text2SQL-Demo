@@ -25,6 +25,7 @@
                 <div id="result-content">
                     <h2>Generated SQL Query</h2>
                     <pre><code id="sql-query-output"></code></pre>
+                    <div id="run-button-container"></div> <!-- Button will be injected here -->
 
                     <h2>Validation Result</h2>
                     <p id="validation-output"></p>
@@ -33,9 +34,17 @@
                     <h2>Error</h2>
                     <p id="error-message"></p>
                 </div>
+
+                <!-- NEW: Container for the results table -->
+                <div id="table-container" class="hidden">
+                    <h2>Query Results</h2>
+                    <div id="query-output-table"></div>
+                </div>
+
             </div>
         </main>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+
